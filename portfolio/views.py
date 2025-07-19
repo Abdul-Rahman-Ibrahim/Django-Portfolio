@@ -3,7 +3,7 @@ from django.views.generic import View
 
 from datetime import datetime
 
-from .models import About, Experience
+from .models import About, Experience, Education
 
 
 class HomeView(View):
@@ -42,8 +42,11 @@ class HomeView(View):
 class ResumeView(View):
     def get(self, request):
         experiences = Experience.objects.all().order_by('-start_date')
+        education = Education.objects.all().order_by('-start_date')
+
         context = {
             'experiences': experiences,
+            'education': education,
         }
         return render(request, 'resume.html', context=context)
 

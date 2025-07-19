@@ -31,3 +31,16 @@ class Experience(models.Model):
 
     def __str__(self) -> str:
         return self.company
+    
+
+class Education(models.Model):
+    school = models.CharField(max_length=100)
+    degree = models.CharField(max_length=100)
+    description = models.TextField()
+    field_of_study = models.CharField(max_length=100)
+    start_date = models.DateField()
+    end_date = models.DateField(blank=True, null=True)
+    location = models.CharField(max_length=100, blank=True)
+
+    def __str__(self) -> str:
+        return self.school
