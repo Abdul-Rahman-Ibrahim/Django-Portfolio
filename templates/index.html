@@ -5,14 +5,23 @@
 
 
 {% block content %}
+
 <style>
     .profile {
-    max-width: 500px;
-    height: 500px;
-    border-radius: 70px;
-    padding: 1.5rem;
-}
+        max-width: 500px;
+        height: 500px;
+        border-radius: 50px;
+        padding: 1.5rem;
+        margin-top: 5rem;
+        /* adjust this value if needed */
+    }
+
+    .dodo {
+        margin-top: 100px;
+    }
+
 </style>
+
 <header class="py-5">
     <div class="container px-5 pb-5">
         <div class="row gx-5 align-items-center">
@@ -32,11 +41,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xxl-7">
+
+            <div class="dodo col-xxl-7">
                 <!-- Header profile picture-->
                 <div class="d-flex justify-content-center mt-5 mt-xxl-0">
-                    <div  class="profile bg-gradient-primary-to-secondary mx-auto">
-                        <img class="profile-img" src="{% static 'imgs/pfp3.png' %}"  alt="Profile Picture" />
+                    <div class="profile bg-gradient-primary-to-secondary mx-auto mt-5">
+                        <img class="profile-img" src="{% static 'imgs/pfp3.png' %}" alt="Profile Picture" />
                         <div class="dots-1">
                             <!-- SVG Dots-->
                             <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
