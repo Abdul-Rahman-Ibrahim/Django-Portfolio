@@ -44,3 +44,17 @@ class Education(models.Model):
 
     def __str__(self) -> str:
         return self.school
+
+
+class Skill(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self) -> str:
+        return self.name
+    
+
+class Languages(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self) -> str:
+        return self.name

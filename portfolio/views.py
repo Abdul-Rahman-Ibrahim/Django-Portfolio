@@ -3,7 +3,7 @@ from django.views.generic import View
 
 from datetime import datetime
 
-from .models import About, Experience, Education
+from .models import About, Experience, Education, Skill, Languages
 
 
 class HomeView(View):
@@ -41,21 +41,40 @@ class HomeView(View):
 
 class ResumeView(View):
     def get(self, request):
+        author = About.objects.all()[0]
+        cv = author.cv
         experiences = Experience.objects.all().order_by('-start_date')
         education = Education.objects.all().order_by('-start_date')
+        skills = Skill.objects.all()
+        languages = Languages.objects.all()
+
+        current_year = datetime.now().year
 
         context = {
+            'cv': cv,
             'experiences': experiences,
             'education': education,
+            'skills': skills,
+            'languages': languages,
+            'current_year': current_year,
         }
         return render(request, 'resume.html', context=context)
 
 
 class ProjectsView(View):
     def get(self, request):
-        return render(request, 'projects.html')
+        current_year = datetime.now().year
+        context = {
+            'current_year': current_year,
+        }
+        return render(request, 'projects.html', context=context)
 
 
 class ContactView(View):
     def get(self, request):
-        return render(request, 'contact.html')
+        current_year = datetime.now().year
+        context = {
+            'current_year': current_year,
+        }
+        
+        return render(request, 'contact.html', context=context)
