@@ -19,3 +19,15 @@ class About(models.Model):
 
     def __str__(self):
         return f"About - {self.user.get_full_name() or self.user.username}"
+
+
+class Experience(models.Model):
+    company = models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    start_date = models.DateField()
+    end_date = models.DateField(blank=True, null=True)
+    location = models.CharField(max_length=100, blank=True)
+
+    def __str__(self) -> str:
+        return self.company

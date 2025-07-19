@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.views.generic import View
+
 from datetime import datetime
-from .models import About
+
+from .models import About, Experience
 
 
 class HomeView(View):
@@ -39,7 +41,11 @@ class HomeView(View):
 
 class ResumeView(View):
     def get(self, request):
-        return render(request, 'resume.html')
+        experiences = Experience.objects.all().order_by('-start_date')
+        context = {
+            'experiences': experiences,
+        }
+        return render(request, 'resume.html', context=context)
 
 
 class ProjectsView(View):
