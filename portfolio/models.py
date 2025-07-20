@@ -58,3 +58,8 @@ class Languages(models.Model):
 
     def __str__(self) -> str:
         return self.name
+    
+
+class Project(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
