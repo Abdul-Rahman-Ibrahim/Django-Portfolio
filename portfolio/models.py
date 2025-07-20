@@ -62,4 +62,9 @@ class Languages(models.Model):
 
 class Project(models.Model):
     name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='projects/', null=True, blank=True)
+    url = models.URLField(null=True, blank=True)
     description = models.TextField()
+
+    def __str__(self) -> str:
+        return self.name

@@ -3,7 +3,7 @@ from django.views.generic import View
 
 from datetime import datetime
 
-from .models import About, Experience, Education, Skill, Languages
+from .models import About, Experience, Education, Skill, Languages, Project
 
 
 class HomeView(View):
@@ -63,8 +63,10 @@ class ResumeView(View):
 
 class ProjectsView(View):
     def get(self, request):
+        projects = Project.objects.all()
         current_year = datetime.now().year
         context = {
+            'projects': projects,
             'current_year': current_year,
         }
         return render(request, 'projects.html', context=context)
